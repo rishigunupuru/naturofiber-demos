@@ -1,0 +1,1154 @@
+<!DOCTYPE html>
+<html lang="en-IN">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NaturoFiber — Structural composites engineered from natural fibre</title>
+<meta name="description" content="NaturoFiber develops natural-fibre and hybrid fibre-reinforced polymer (FRP) composites — building panels, rebar and structural profiles.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%231E242B'/%3E%3Cg transform='translate(5 6.5) scale(2)'%3E%3Crect x='0' y='0' width='9' height='1.6' fill='%23F2EEE6'/%3E%3Crect x='2' y='3.2' width='9' height='1.6' fill='%239A6B3F'/%3E%3Crect x='0' y='6.4' width='9' height='1.6' fill='%23F2EEE6'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          graphite: '#1E242B',
+          deep: '#161B21',
+          bronze: { DEFAULT: '#9A6B3F', light: '#C9A27A', dark: '#7A5230', btn: '#8B5E36' },
+          bone: '#F2EEE6',
+          slate: '#5A6672',
+          warm: '#8A8680',
+          hair: '#DCD6CB',
+          mist: '#B9B4AB',
+          plate: '#E7E1D6'
+        },
+        fontFamily: { sans: ['Archivo', 'system-ui', 'Segoe UI', 'sans-serif'] }
+      }
+    }
+  };
+</script>
+<style>
+  html { scroll-behavior: smooth; scroll-padding-top: 84px; -webkit-font-smoothing: antialiased; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  body { font-family: 'Archivo', system-ui, sans-serif; font-feature-settings: "ss01"; }
+  .tnum { font-variant-numeric: tabular-nums lining-nums; }
+  .label { font-size: 11px; letter-spacing: .2em; text-transform: uppercase; font-weight: 600; }
+  :focus-visible { outline: 2px solid #C9A27A; outline-offset: 3px; border-radius: 2px; }
+
+  /* Signature motif: aligned hairlines + one bronze tracer */
+  .hairfield { background-image: repeating-linear-gradient(to bottom, rgba(242,238,230,.085) 0 1px, transparent 1px 7px); }
+  .hairfield-ink { background-image: repeating-linear-gradient(to bottom, rgba(30,36,43,.09) 0 1px, transparent 1px 7px); }
+  .tracer { position: absolute; left: 0; right: 0; height: 1px; background: #9A6B3F; }
+  .tracer-band { position: relative; height: 56px; }
+  .tracer-band .tracer { top: 35px; }
+
+  /* Registration marks */
+  .reg { position: relative; }
+  .reg > .tk { position: absolute; width: 14px; height: 14px; border: 0 solid #9A6B3F; pointer-events: none; }
+  .reg > .tk.tl { top: -9px; left: -9px; border-top-width: 1px; border-left-width: 1px; }
+  .reg > .tk.tr { top: -9px; right: -9px; border-top-width: 1px; border-right-width: 1px; }
+  .reg > .tk.bl { bottom: -9px; left: -9px; border-bottom-width: 1px; border-left-width: 1px; }
+  .reg > .tk.br { bottom: -9px; right: -9px; border-bottom-width: 1px; border-right-width: 1px; }
+
+  /* Unified headshot treatment */
+  .portrait { position: relative; width: 160px; aspect-ratio: 4 / 5; overflow: hidden; background: #E2DCD0; isolation: isolate; }
+  .portrait img { filter: grayscale(1) contrast(1.06) brightness(1.04); mix-blend-mode: multiply; }
+  .portrait::after { content: ""; position: absolute; inset: 0; background: #9A6B3F; mix-blend-mode: color; opacity: .16; }
+
+  /* White-background object photos sit on plates */
+  .on-plate { mix-blend-mode: multiply; }
+
+  /* Stage tracker pulse */
+  @keyframes tracerPulse { 0% { box-shadow: 0 0 0 0 rgba(154,107,63,.55); } 70% { box-shadow: 0 0 0 12px rgba(154,107,63,0); } 100% { box-shadow: 0 0 0 0 rgba(154,107,63,0); } }
+  .node-current { animation: tracerPulse 2.4s ease-out infinite; }
+  @media (prefers-reduced-motion: reduce) { .node-current { animation: none; } }
+
+  /* Reveal — content is visible by default; only animates once JS adds .js */
+  .js .reveal { opacity: 0; transform: translateY(14px); transition: opacity .8s cubic-bezier(.2,.7,.2,1), transform .8s cubic-bezier(.2,.7,.2,1); }
+  .js .reveal.in { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) { .js .reveal { opacity: 1; transform: none; transition: none; } }
+
+  /* Header state */
+  #site-header { transition: background-color .3s ease, border-color .3s ease; }
+  #site-header.scrolled { background-color: rgba(22,27,33,.92); border-color: rgba(242,238,230,.08); backdrop-filter: blur(8px); }
+
+  /* Application row tracer */
+  .app-row .row-tracer { transform: scaleX(0); transform-origin: left; transition: transform .6s cubic-bezier(.2,.7,.2,1); }
+  .app-row:hover .row-tracer { transform: scaleX(1); }
+
+  /* Form */
+  .field { width: 100%; background: transparent; border: 0; border-bottom: 1px solid rgba(242,238,230,.22); padding: 10px 0 12px; color: #F2EEE6; font-size: 16px; border-radius: 0; }
+  .field::placeholder { color: rgba(242,238,230,.38); }
+  .field:focus { outline: none; border-bottom-color: #C9A27A; box-shadow: 0 1px 0 0 #C9A27A; }
+  select.field { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%23C9A27A' stroke-width='1.2'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 2px center; padding-right: 24px; }
+  select.field option { color: #1E242B; }
+
+  .cmp-table th, .cmp-table td { vertical-align: top; }
+</style>
+</head>
+<body class="bg-graphite text-bone antialiased">
+<div style="position:fixed;top:10px;right:10px;z-index:9999;background:#FFF4CC;color:#4A3B00;font:600 11px/1.2 Inter,system-ui,sans-serif;letter-spacing:.08em;text-transform:uppercase;padding:6px 10px;border-radius:999px;box-shadow:0 2px 10px rgba(0,0,0,.15)">Design draft · not the final website</div>
+
+<a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[80] focus:bg-bone focus:text-graphite focus:px-4 focus:py-2">Skip to content</a>
+
+<!-- ============ 1. NAVIGATION ============ -->
+<header id="site-header" class="fixed inset-x-0 top-0 z-50 border-b border-transparent">
+  <div class="mx-auto max-w-[1280px] px-6 md:px-10 h-[72px] flex items-center justify-between">
+    <a href="#top" class="flex items-center gap-3 text-bone" aria-label="NaturoFiber — home">
+      <svg viewBox="0 0 11 8" class="h-[14px] w-auto" aria-hidden="true">
+        <rect x="0" y="0" width="9" height="1.6" fill="currentColor"/>
+        <rect x="2" y="3.2" width="9" height="1.6" fill="#9A6B3F"/>
+        <rect x="0" y="6.4" width="9" height="1.6" fill="currentColor"/>
+      </svg>
+      <span class="text-[15px] uppercase tracking-[.04em] leading-none"><span class="font-normal">Naturo</span><span class="font-bold">Fiber</span></span>
+    </a>
+    <nav aria-label="Primary" class="hidden lg:flex items-center gap-9">
+      <a href="#technology" class="text-[13.5px] text-bone/75 hover:text-bone transition-colors">Technology</a>
+      <a href="#products" class="text-[13.5px] text-bone/75 hover:text-bone transition-colors">Products</a>
+      <a href="#applications" class="text-[13.5px] text-bone/75 hover:text-bone transition-colors">Applications</a>
+      <a href="#capabilities" class="text-[13.5px] text-bone/75 hover:text-bone transition-colors">Capabilities</a>
+      <a href="#team" class="text-[13.5px] text-bone/75 hover:text-bone transition-colors">Team</a>
+    </nav>
+    <div class="flex items-center gap-3">
+      <a href="#contact" class="hidden sm:inline-flex items-center gap-2 bg-bronze-btn hover:bg-bronze-dark text-bone text-[13px] font-semibold tracking-[.02em] px-5 h-10 transition-colors">Partner with us</a>
+      <button id="menu-btn" type="button" class="lg:hidden inline-flex flex-col justify-center items-center w-10 h-10 border border-bone/20" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu">
+        <span class="block w-4 h-px bg-bone"></span>
+        <span class="block w-4 h-px bg-bronze-light my-[4px] translate-x-[3px]"></span>
+        <span class="block w-4 h-px bg-bone"></span>
+      </button>
+    </div>
+  </div>
+  <div id="mobile-menu" class="lg:hidden hidden border-t border-bone/10 bg-deep">
+    <nav aria-label="Mobile" class="mx-auto max-w-[1280px] px-6 py-6 flex flex-col">
+      <a href="#technology" class="py-3 border-b border-bone/10 text-[17px]">Technology</a>
+      <a href="#products" class="py-3 border-b border-bone/10 text-[17px]">Products</a>
+      <a href="#applications" class="py-3 border-b border-bone/10 text-[17px]">Applications</a>
+      <a href="#capabilities" class="py-3 border-b border-bone/10 text-[17px]">Capabilities</a>
+      <a href="#team" class="py-3 border-b border-bone/10 text-[17px]">Team</a>
+      <a href="#contact" class="mt-5 inline-flex justify-center items-center bg-bronze-btn text-bone font-semibold h-12">Partner with us</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- ============ 2. HERO ============ -->
+<section id="top" class="relative overflow-hidden bg-graphite">
+  <!-- faint vertical grid -->
+  <div class="pointer-events-none absolute inset-0 hidden lg:block" aria-hidden="true">
+    <div class="mx-auto max-w-[1280px] h-full px-10 grid grid-cols-12 gap-6">
+      <div class="col-span-1 border-l border-bone/[.05] h-full"></div>
+      <div class="col-start-7 border-l border-bone/[.05] h-full"></div>
+      <div class="col-start-12 border-r border-bone/[.05] h-full"></div>
+    </div>
+  </div>
+
+  <div class="relative mx-auto max-w-[1280px] px-6 md:px-10 pt-[120px] lg:pt-[136px] pb-[132px] lg:pb-[150px]">
+    <div class="grid lg:grid-cols-12 gap-12 lg:gap-6 items-end">
+      <div class="lg:col-span-7 lg:pr-6 reveal">
+        <p class="label text-bronze-light flex items-center gap-3"><span class="inline-block w-6 h-px bg-bronze"></span>Natural-fibre &amp; hybrid FRP composites</p>
+        <h1 class="mt-7 font-medium text-[42px] leading-[1.02] sm:text-[56px] lg:text-[66px] xl:text-[78px] lg:leading-[.98] tracking-[-0.035em]">
+          Structural composites, <span class="font-light text-bone/70">engineered from natural fibre.</span>
+        </h1>
+        <p class="mt-8 max-w-[560px] text-[17px] lg:text-[18px] leading-[1.6] text-mist">
+          NaturoFiber develops natural-fibre and hybrid fibre-reinforced polymer (FRP) composites — building panels, rebar and structural profiles — that are lighter than steel, resist corrosion and carry a lower carbon footprint than conventional glass- and carbon-fibre composites.
+        </p>
+        <div class="mt-10 flex flex-wrap items-center gap-x-8 gap-y-4">
+          <a href="#contact" class="inline-flex items-center gap-3 bg-bronze-btn hover:bg-bronze-dark text-bone font-semibold text-[14px] tracking-[.02em] h-12 px-7 transition-colors">
+            Partner with us
+            <svg width="14" height="10" viewBox="0 0 14 10" aria-hidden="true"><path d="M0 5h12M8 1l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.3"/></svg>
+          </a>
+          <a href="#technology" class="group inline-flex items-center gap-3 text-[14px] font-medium text-bone h-12">
+            <span class="border-b border-bone/30 group-hover:border-bronze-light pb-1 transition-colors">Explore the technology</span>
+            <svg width="10" height="12" viewBox="0 0 10 12" aria-hidden="true" class="text-bronze-light"><path d="M5 0v10M1 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.3"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <figure class="lg:col-span-5 reveal">
+        <div class="reg mx-auto lg:ml-auto max-w-[440px]">
+          <span class="tk tl"></span><span class="tk tr"></span><span class="tk bl"></span><span class="tk br"></span>
+          <div class="relative aspect-[4/5] overflow-hidden bg-deep">
+            <img src="assets/vartm-lab.jpg" alt="Composites laboratory: a vacuum pump draws resin through a woven fibre laminate sealed under a vacuum bag (VARTM)." class="absolute inset-0 w-full h-full object-cover" style="object-position: 50% 62%;" width="1200" height="1600" fetchpriority="high">
+            <div class="absolute inset-0 bg-gradient-to-t from-deep/50 via-transparent to-transparent"></div>
+          </div>
+          <figcaption class="mt-4 flex items-baseline justify-between gap-4 text-[11.5px] text-mist">
+            <span class="tnum text-bronze-light tracking-[.15em]">FIG. 01</span>
+            <span class="text-right">Vacuum-assisted resin transfer moulding (VARTM)</span>
+          </figcaption>
+        </div>
+      </figure>
+    </div>
+  </div>
+
+  <!-- Hairline band with the bronze tracer -->
+  <div class="absolute inset-x-0 bottom-0 h-[84px] hairfield" aria-hidden="true">
+    <div class="tracer" style="top:49px"></div>
+    <div class="mx-auto max-w-[1280px] px-6 md:px-10 h-full flex items-end justify-between pb-3">
+      <span class="label !text-[10px] text-bone/45 tnum">0° / 90° / 0°</span>
+      <span class="label !text-[10px] text-bone/45">Natural fibre. Structural grade.</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 3. TRUST STRIP ============ -->
+<section aria-label="Credentials" class="bg-deep border-b border-bone/[.06]">
+  <div class="mx-auto max-w-[1280px] px-6 md:px-10">
+    <ul class="grid sm:grid-cols-2 lg:grid-cols-4">
+      <li class="py-7 lg:py-9 sm:pr-8 border-b sm:border-b lg:border-b-0 border-bone/10 lg:border-r">
+        <span class="tnum text-[11px] text-bronze-light tracking-[.15em]">01</span>
+        <p class="mt-3 text-[14.5px] leading-[1.5] text-bone/85">Incubated at BITS Pilani — Department of Civil Engineering</p>
+      </li>
+      <li class="py-7 lg:py-9 sm:pl-8 lg:px-8 border-b lg:border-b-0 border-bone/10 lg:border-r">
+        <span class="tnum text-[11px] text-bronze-light tracking-[.15em]">02</span>
+        <p class="mt-3 text-[14.5px] leading-[1.5] text-bone/85">Founding team serves on ACI Committee 440 — FRP reinforcement</p>
+      </li>
+      <li class="py-7 lg:py-9 sm:pr-8 lg:px-8 border-b sm:border-b-0 border-bone/10 lg:border-r">
+        <span class="tnum text-[11px] text-bronze-light tracking-[.15em]">03</span>
+        <p class="mt-3 text-[14.5px] leading-[1.5] text-bone/85">Co-founder ranked in the world's top 2% scientists (Stanford–Elsevier, 2023 &amp; 2024)</p>
+      </li>
+      <li class="py-7 lg:py-9 sm:pl-8">
+        <span class="tnum text-[11px] text-bronze-light tracking-[.15em]">04</span>
+        <p class="mt-3 text-[14.5px] leading-[1.5] text-bone/85"><span class="tnum">37+</span> years of composites and structural engineering research</p>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ 4. THE PROBLEM ============ -->
+<section aria-labelledby="problem-h" class="bg-bone text-graphite">
+  <div class="mx-auto max-w-[1280px] px-6 md:px-10 py-24 lg:py-32">
+    <div class="grid lg:grid-cols-12 gap-10 lg:gap-6">
+      <div class="lg:col-span-4 reveal">
+        <p class="label text-bronze-dark flex items-center gap-3"><span class="tnum">01</span><span class="inline-block w-6 h-px bg-bronze"></span>The problem</p>
+      </div>
+      <div class="lg:col-span-8 reveal">
+        <h2 id="problem-h" class="font-medium text-[34px] sm:text-[42px] lg:text-[50px] leading-[1.04] tracking-[-0.03em]">Composites built modern industry. <span class="text-slate font-light">They also built a carbon and waste problem.</span></h2>
+        <p class="mt-7 max-w-[620px] text-[17px] leading-[1.65] text-slate">Automotive, aerospace, rail, packaging and green building in India all depend on energy-intensive synthetic fibre-reinforced polymers such as glass and carbon fibre.</p>
+      </div>
+    </div>
+
+    <div class="mt-20 grid md:grid-cols-3 border-t border-graphite/15">
+      <article class="pt-8 pb-10 md:pr-10 md:border-r border-b md:border-b-0 border-graphite/15 reveal">
+        <p class="tnum font-light text-[56px] lg:text-[72px] leading-none tracking-[-0.04em]">100,000+<span class="ml-2 text-[20px] lg:text-[22px] tracking-normal font-normal text-slate">MT</span></p>
+        <p class="mt-6 text-[15.5px] leading-[1.6] text-graphite/85">Composite waste generated in India every year. End-of-life FRP is landfilled or incinerated.</p>
+        <p class="mt-5 label !text-[10px] !font-medium text-slate">Source: PRT Innovations Pvt Ltd</p>
+      </article>
+      <article class="pt-8 pb-10 md:px-10 md:border-r border-b md:border-b-0 border-graphite/15 reveal">
+        <p class="tnum font-light text-[56px] lg:text-[72px] leading-none tracking-[-0.04em]">1.7–2.5<span class="ml-2 text-[20px] lg:text-[22px] tracking-normal font-normal text-slate">t CO₂e</span></p>
+        <p class="mt-6 text-[15.5px] leading-[1.6] text-graphite/85">Emitted for every tonne of glass fibre produced, plus ~17 GJ of energy per tonne of molten glass.</p>
+        <p class="mt-5 label !text-[10px] !font-medium text-slate">Source: Fortune Business Insights</p>
+      </article>
+      <article class="pt-8 pb-10 md:pl-10 reveal">
+        <p class="tnum font-light text-[56px] lg:text-[72px] leading-none tracking-[-0.04em]">0%</p>
+        <p class="mt-6 text-[15.5px] leading-[1.6] text-graphite/85">Bio-based content in conventional fibreglass sheets, earning no local-material credit under IGBC and GRIHA.</p>
+        <p class="mt-5 label !text-[10px] !font-medium text-slate">Source: IGBC / GRIHA rating frameworks</p>
+      </article>
+    </div>
+
+    <figure class="mt-16 lg:mt-20 relative hairfield-ink border-y border-graphite/15 reveal">
+      <div class="tracer" style="top:0"></div>
+      <div class="grid lg:grid-cols-12 gap-6 py-14 lg:py-20 px-0 lg:px-0">
+        <p class="lg:col-span-3 label text-bronze-dark px-6 lg:pl-10">The core question</p>
+        <blockquote class="lg:col-span-8 px-6 lg:px-0">
+          <p class="font-light text-[26px] sm:text-[32px] lg:text-[38px] leading-[1.22] tracking-[-0.02em]">How can India reduce its dependence on synthetic FRP with scalable, high-performance composites made from renewable natural fibre?</p>
+        </blockquote>
+      </div>
+    </figure>
+  </div>
+</section>
+
+<!-- ============ 5. TECHNOLOGY ============ -->
+<section id="technology" aria-labelledby="tech-h" class="bg-graphite">
+  <div class="tracer-band hairfield" aria-hidden="true"><div class="tracer"></div></div>
+  <div class="mx-auto max-w-[1280px] px-6 md:px-10 pt-16 lg:pt-24 pb-24 lg:pb-32">
+    <div class="grid lg:grid-cols-12 gap-10 lg:gap-6">
+      <div class="lg:col-span-4 reveal">
+        <p class="label text-bronze-light flex items-center gap-3"><span class="tnum">02</span><span class="inline-block w-6 h-px bg-bronze"></span>Our approach</p>
+      </div>
+      <h2 id="tech-h" class="lg:col-span-8 font-medium text-[34px] sm:text-[42px] lg:text-[50px] leading-[1.04] tracking-[-0.03em] reveal">Two routes to a lighter, lower-carbon composite.</h2>
+    </div>
+
+    <div class="mt-16 lg:mt-20 grid lg:grid-cols-12 gap-14 lg:gap-6 items-center">
+      <div class="lg:col-span-5 reveal">
+        <article class="border-t border-bone/15 pt-7 pb-10">
+          <p class="tnum label text-bronze-light">Route 01</p>
+          <h3 class="mt-3 text-[24px] lg:text-[26px] font-medium tracking-[-0.015em]">Natural-fibre composites</h3>
+          <p class="mt-4 text-[16px] leading-[1.65] text-mist">Locally sourced natural fibres such as kenaf replace synthetic glass fibre in non-structural and semi-structural components.</p>
+        </article>
+        <article class="border-t border-bone/15 pt-7 pb-2">
+          <p class="tnum label text-bronze-light">Route 02</p>
+          <h3 class="mt-3 text-[24px] lg:text-[26px] font-medium tracking-[-0.015em]">Hybrid natural / synthetic composites</h3>
+          <p class="mt-4 text-[16px] leading-[1.65] text-mist">Natural-fibre plies are interlaminated with high-performance carbon or glass fibre, putting strength exactly where the load path needs it — for demanding structural applications.</p>
+        </article>
+      </div>
+
+      <figure class="lg:col-span-6 lg:col-start-7 reveal">
+        <div class="reg">
+          <span class="tk tl"></span><span class="tk tr"></span><span class="tk bl"></span><span class="tk br"></span>
+          <div class="bg-deep border border-bone/[.07] p-5 sm:p-8">
+            <svg viewBox="0 0 640 410" class="w-full h-auto" role="img" aria-labelledby="ply-t ply-d">
+              <title id="ply-t">Hybrid laminate ply stack</title>
+              <desc id="ply-d">Exploded diagram: a carbon-fibre ply, a woven kenaf ply and a second carbon-fibre ply bond into one hybrid laminate.</desc>
+              <defs>
+                <pattern id="pCarbon" width="5" height="5" patternUnits="userSpaceOnUse">
+                  <rect width="5" height="5" fill="#0F1317"/>
+                  <path d="M0 2.5H5" stroke="#3A434D" stroke-width="1"/>
+                </pattern>
+                <pattern id="pKenaf" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="skewX(48.8)">
+                  <rect width="8" height="8" fill="#A0855F"/>
+                  <path d="M0 2H8M0 6H8" stroke="#856B49" stroke-width="1.4"/>
+                  <path d="M2 0V8M6 0V8" stroke="#BFA27A" stroke-width="1.1" opacity=".75"/>
+                </pattern>
+              </defs>
+              <!-- ply 1 carbon -->
+              <g>
+                <polygon points="60,20 360,20 440,90 140,90" fill="url(#pCarbon)" stroke="#5A6672" stroke-width="1"/>
+                <polygon points="140,90 440,90 440,97 140,97" fill="#0B0E11" stroke="#5A6672" stroke-width="1"/>
+              </g>
+              <!-- ply 2 kenaf + tracer tow -->
+              <g>
+                <polygon points="60,108 360,108 440,178 140,178" fill="url(#pKenaf)" stroke="#8A8680" stroke-width="1"/>
+                <polygon points="140,178 440,178 440,187 140,187" fill="#6E5A3E" stroke="#8A8680" stroke-width="1"/>
+                <line x1="100" y1="143" x2="400" y2="143" stroke="#C9A27A" stroke-width="1.6"/>
+              </g>
+              <!-- ply 3 carbon -->
+              <g>
+                <polygon points="60,198 360,198 440,268 140,268" fill="url(#pCarbon)" stroke="#5A6672" stroke-width="1"/>
+                <polygon points="140,268 440,268 440,275 140,275" fill="#0B0E11" stroke="#5A6672" stroke-width="1"/>
+              </g>
+              <!-- consolidation arrows -->
+              <g stroke="#8A8680" stroke-width="1" fill="none" stroke-dasharray="2 4">
+                <path d="M60 220 L60 312"/><path d="M440 290 L440 382"/>
+              </g>
+              <path d="M250 286 v24 M244 304 l6 6 6-6" stroke="#C9A27A" stroke-width="1.2" fill="none"/>
+              <!-- bonded hybrid laminate -->
+              <g>
+                <polygon points="60,312 360,312 440,374 140,374" fill="url(#pCarbon)" stroke="#8A8680" stroke-width="1"/>
+                <rect x="140" y="374" width="300" height="6" fill="#0B0E11"/>
+                <rect x="140" y="380" width="300" height="9" fill="#A0855F"/>
+                <rect x="140" y="389" width="300" height="6" fill="#0B0E11"/>
+                <rect x="140" y="374" width="300" height="21" fill="none" stroke="#8A8680" stroke-width="1"/>
+              </g>
+              <!-- labels -->
+              <g font-family="Archivo, sans-serif" font-size="12" fill="#B9B4AB" letter-spacing="1.6">
+                <line x1="410" y1="55" x2="470" y2="55" stroke="#5A6672"/><text x="478" y="59">CARBON FIBRE</text>
+                <line x1="410" y1="143" x2="470" y2="143" stroke="#C9A27A"/><text x="478" y="147" fill="#C9A27A">WOVEN KENAF</text>
+                <line x1="410" y1="233" x2="470" y2="233" stroke="#5A6672"/><text x="478" y="237">CARBON FIBRE</text>
+                <line x1="448" y1="384" x2="470" y2="384" stroke="#5A6672"/><text x="478" y="388" fill="#F2EEE6">HYBRID LAMINATE</text>
+              </g>
+              <g font-family="Archivo, sans-serif" font-size="10" fill="#8A8680" letter-spacing="1.5">
+                <text x="0" y="59">P1</text><text x="0" y="147">P2</text><text x="0" y="237">P3</text>
+              </g>
+            </svg>
+          </div>
+        </div>
+        <figcaption class="mt-4 flex items-baseline justify-between gap-4 text-[11.5px] text-mist">
+          <span class="tnum text-bronze-light tracking-[.15em]">FIG. 02</span>
+          <span class="text-right">Carbon fibre / woven kenaf / carbon fibre — bonding into one hybrid laminate</span>
+        </figcaption>
+      </figure>
+    </div>
+
+    <div class="mt-20 lg:mt-24 grid lg:grid-cols-12 gap-10 lg:gap-6 items-stretch">
+      <article class="lg:col-span-5 relative bg-deep border border-bone/[.07] p-8 lg:p-10 reveal">
+        <div class="absolute left-0 right-0 top-0 h-px bg-bronze"></div>
+        <p class="label text-bronze-light">Highlight</p>
+        <h3 class="mt-4 text-[28px] lg:text-[32px] font-medium tracking-[-0.02em]">Functional gradation</h3>
+        <p class="mt-5 text-[16px] leading-[1.65] text-mist">Fibre type, orientation and placement are graded through the thickness, so high-performance material goes only where performance is required. <span class="text-bone">That is where the cost and carbon saving comes from.</span></p>
+        <!-- gradation bar -->
+        <div class="mt-8" aria-hidden="true">
+          <div class="flex flex-col gap-[3px]">
+            <div class="h-[6px] bg-[#0F1317] border border-bone/10"></div>
+            <div class="h-[6px] bg-[#3A434D]"></div>
+            <div class="h-[6px] bg-[#6E5A3E]"></div>
+            <div class="h-[10px] bg-[#A0855F] relative"><div class="absolute inset-x-0 top-1/2 h-px bg-bronze-light"></div></div>
+            <div class="h-[6px] bg-[#6E5A3E]"></div>
+            <div class="h-[6px] bg-[#3A434D]"></div>
+            <div class="h-[6px] bg-[#0F1317] border border-bone/10"></div>
+          </div>
+        </div>
+      </article>
+      <figure class="lg:col-span-7 reveal">
+        <div class="relative h-full min-h-[280px] bg-plate overflow-hidden">
+          <img src="assets/laminate-strips.png" alt="Macro view of woven natural-fibre fabric beside cured natural-fibre composite laminate strips." class="on-plate absolute inset-0 w-full h-full object-cover" style="object-position: 50% 45%;" width="2000" height="1300" loading="lazy">
+          <span class="absolute left-5 bottom-4 tnum text-[11px] tracking-[.15em] text-bronze-dark font-semibold">FIG. 03</span>
+        </div>
+      </figure>
+    </div>
+
+    <ul class="mt-14 flex flex-wrap gap-2.5 reveal" aria-label="Key features">
+      <li class="text-[13px] text-bone/85 border border-bone/20 px-4 py-2">Renewable reinforcement</li>
+      <li class="text-[13px] text-bone/85 border border-bone/20 px-4 py-2">Engineered fibre architecture</li>
+      <li class="text-[13px] text-bone/85 border border-bone/20 px-4 py-2">Lightweight construction</li>
+      <li class="text-[13px] text-bone/85 border border-bone/20 px-4 py-2">Hybrid performance</li>
+      <li class="text-[13px] text-bone/85 border border-bone/20 px-4 py-2">Scalable manufacturing</li>
+      <li class="text-[13px] text-bone/85 border border-bone/20 px-4 py-2">Application-specific design</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ 6. PRODUCTS ============ -->
+<section id="products" aria-labelledby="products-h" class="bg-bone text-graphite">
+  <div class="mx-auto max-w-[1280px] px-6 md:px-10 py-24 lg:py-32">
+    <div class="grid lg:grid-cols-12 gap-10 lg:gap-6">
+      <div class="lg:col-span-4 reveal">
+        <p class="label text-bronze-dark flex items-center gap-3"><span class="tnum">03</span><span class="inline-block w-6 h-px bg-bronze"></span>Product platform</p>
+      </div>
+      <h2 id="products-h" class="lg:col-span-8 font-medium text-[34px] sm:text-[42px] lg:text-[50px] leading-[1.04] tracking-[-0.03em] reveal">One material platform. <span class="font-light text-slate">Four product families.</span></h2>
+    </div>
+
+    <div class="mt-16 grid sm:grid-cols-2 xl:grid-cols-4 border-t border-l border-graphite/15">
+      <!-- 1 -->
+      <article class="border-r border-b border-graphite/15 flex flex-col reveal">
+        <div class="relative aspect-[4/3] bg-plate overflow-hidden">
+          <img src="assets/vartm-layup-2.jpg" alt="Prototype woven-fibre laminate panel sealed under a vacuum bag, viewed from above." class="absolute inset-0 w-full h-full object-cover" style="object-position: 50% 50%;" width="1419" height="1331" loading="lazy">
+        </div>
+        <div class="p-6 lg:p-7 flex-1 flex flex-col">
+          <div class="flex items-center justify-between">
+            <span class="tnum text-[12px] text-slate tracking-[.15em]">01</span>
+            <span class="label !text-[10px] text-bronze-dark border border-bronze/50 px-2 py-1">In development</span>
+          </div>
+          <h3 class="mt-5 text-[21px] font-medium tracking-[-0.01em]">Building panels</h3>
+          <p class="mt-3 text-[15px] leading-[1.6] text-slate">Wall, cladding, false-ceiling and partition panels. Lightweight and corrosion-free, with bio-based content for green-building ratings.</p>
+        </div>
+      </article>
+      <!-- 2 -->
+      <article class="border-r border-b border-graphite/15 flex flex-col reveal">
+        <div class="relative aspect-[4/3] bg-plate overflow-hidden">
+          <img src="assets/geogrids.png" alt="Two textile geogrid samples: a light open-mesh grid and a dark heavier grid." class="on-plate absolute inset-0 w-full h-full object-contain p-4" width="1004" height="1125" loading="lazy">
+        </div>
+        <div class="p-6 lg:p-7 flex-1 flex flex-col">
+          <div class="flex items-center justify-between">
+            <span class="tnum text-[12px] text-slate tracking-[.15em]">02</span>
+            <span class="label !text-[10px] text-bronze-dark border border-bronze/50 px-2 py-1">In development</span>
+          </div>
+          <h3 class="mt-5 text-[21px] font-medium tracking-[-0.01em]">FRP rebar &amp; textile geogrids</h3>
+          <p class="mt-3 text-[15px] leading-[1.6] text-slate">Non-corroding reinforcement for concrete and soil in aggressive environments.</p>
+        </div>
+      </article>
+      <!-- 3 -->
+      <article class="border-r border-b border-graphite/15 flex flex-col reveal">
+        <div class="relative aspect-[4/3] bg-plate overflow-hidden flex items-center justify-center">
+          <svg viewBox="0 0 320 240" class="w-[86%] h-auto" role="img" aria-label="Line drawing of structural profile cross-sections: I-beam, tube and channel.">
+            <g fill="none" stroke="#1E242B" stroke-width="1.4">
+              <!-- I-beam -->
+              <path d="M30 70h70v10H70v80h30v10H30v-10h30V80H30z"/>
+              <!-- tube -->
+              <circle cx="165" cy="120" r="44"/><circle cx="165" cy="120" r="35"/>
+              <!-- channel -->
+              <path d="M235 70h55v10h-45v80h45v10h-55z"/>
+            </g>
+            <g stroke="#9A6B3F" stroke-width="1" stroke-dasharray="4 3">
+              <line x1="20" y1="120" x2="300" y2="120"/>
+            </g>
+            <g stroke="#5A6672" stroke-width=".8" fill="none">
+              <path d="M30 192v8M100 192v8M30 196h70"/><path d="M121 192v8M209 192v8M121 196h88"/><path d="M235 192v8M290 192v8M235 196h55"/>
+            </g>
+            <g font-family="Archivo, sans-serif" font-size="9" fill="#5A6672" letter-spacing="1.4" text-anchor="middle">
+              <text x="65" y="214">I-SECTION</text><text x="165" y="214">TUBULAR</text><text x="262" y="214">CHANNEL</text>
+            </g>
+          </svg>
+        </div>
+        <div class="p-6 lg:p-7 flex-1 flex flex-col">
+          <div class="flex items-center justify-between">
+            <span class="tnum text-[12px] text-slate tracking-[.15em]">03</span>
+            <span class="label !text-[10px] text-bronze-dark border border-bronze/50 px-2 py-1">In development</span>
+          </div>
+          <h3 class="mt-5 text-[21px] font-medium tracking-[-0.01em]">Structural profiles</h3>
+          <p class="mt-3 text-[15px] leading-[1.6] text-slate">Pultruded and filament-wound beams, plates, shells and tubular sections.</p>
+        </div>
+      </article>
+      <!-- 4 -->
+      <article class="border-r border-b border-graphite/15 flex flex-col reveal">
+        <div class="relative aspect-[4/3] bg-plate overflow-hidden flex items-center justify-center">
+          <svg viewBox="0 0 320 240" class="w-[86%] h-auto" role="img" aria-label="Line drawing of a custom curved composite shell component with dimension lines.">
+            <g fill="none" stroke="#1E242B" stroke-width="1.4">
+              <path d="M40 160 C 80 70, 240 70, 280 160"/>
+              <path d="M52 160 C 90 84, 230 84, 268 160"/>
+              <path d="M40 160h12M268 160h12"/>
+              <rect x="138" y="96" width="44" height="16" rx="2"/>
+            </g>
+            <g stroke="#9A6B3F" stroke-width="1"><path d="M46 158 C 85 77, 235 77, 274 158" fill="none"/></g>
+            <g stroke="#5A6672" stroke-width=".8" fill="none">
+              <path d="M40 176v10M280 176v10M40 181h240"/>
+              <path d="M296 160h8M296 88h8M300 88v72"/>
+              <path d="M40 160V172M280 160V172" stroke-dasharray="2 2"/>
+            </g>
+            <g font-family="Archivo, sans-serif" font-size="9" fill="#5A6672" letter-spacing="1.4" text-anchor="middle">
+              <text x="160" y="214">CO-DEVELOPED COMPONENT</text>
+            </g>
+          </svg>
+        </div>
+        <div class="p-6 lg:p-7 flex-1 flex flex-col">
+          <div class="flex items-center justify-between">
+            <span class="tnum text-[12px] text-slate tracking-[.15em]">04</span>
+            <span class="label !text-[10px] text-bronze-dark border border-bronze/50 px-2 py-1">In development</span>
+          </div>
+          <h3 class="mt-5 text-[21px] font-medium tracking-[-0.01em]">Custom components</h3>
+          <p class="mt-3 text-[15px] leading-[1.6] text-slate">Co-developed parts for automotive, rail, aerospace and industrial OEMs.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+
+  <!-- ============ 7. COMPARISON ============ -->
+  <div class="tracer-band hairfield-ink" aria-hidden="true"><div class="tracer"></div></div>
+  <div class="mx-auto max-w-[1280px] px-6 md:px-10 pt-20 lg:pt-28 pb-24 lg:pb-32" aria-labelledby="compare-h" role="region">
+    <div class="grid lg:grid-cols-12 gap-10 lg:gap-6">
+      <div class="lg:col-span-4 reveal">
+        <p class="label text-bronze-dark flex items-center gap-3"><span class="tnum">04</span><span class="inline-block w-6 h-px bg-bronze"></span>Why NaturoFiber</p>
+      </div>
+      <h2 id="compare-h" class="lg:col-span-8 font-medium text-[34px] sm:text-[42px] lg:text-[50px] leading-[1.04] tracking-[-0.03em] reveal">How it compares.</h2>
+    </div>
+
+    <div class="mt-14 -mx-6 md:mx-0 overflow-x-auto reveal" tabindex="0" aria-label="Comparison table, scrollable">
+      <table class="cmp-table w-full min-w-[820px] border-collapse text-left text-[14.5px] leading-[1.5] mx-6 md:mx-0">
+        <caption class="sr-only">Comparison of conventional steel, conventional FRP and NaturoFiber composites</caption>
+        <thead>
+          <tr>
+            <th scope="col" class="w-[19%] py-5 pr-6 label !text-[10px] text-slate font-semibold border-b border-graphite/20">Parameter</th>
+            <th scope="col" class="w-[25%] py-5 px-6 text-[15px] font-medium border-b border-graphite/20">Conventional steel</th>
+            <th scope="col" class="w-[25%] py-5 px-6 text-[15px] font-medium border-b border-graphite/20">Conventional FRP</th>
+            <th scope="col" class="w-[31%] py-5 px-6 text-[15px] font-semibold bg-[#FBF9F5] border-t-2 border-t-bronze border-b border-graphite/20">
+              <span class="flex items-center gap-2.5">
+                <svg viewBox="0 0 11 8" class="h-[10px] w-auto" aria-hidden="true"><rect x="0" y="0" width="9" height="1.6" fill="#1E242B"/><rect x="2" y="3.2" width="9" height="1.6" fill="#9A6B3F"/><rect x="0" y="6.4" width="9" height="1.6" fill="#1E242B"/></svg>
+                NaturoFiber
+              </span>
+            </th>
+          </tr>
+        </thead>
+        <tbody class="text-slate">
+          <tr>
+            <th scope="row" class="py-5 pr-6 font-medium text-graphite border-b border-graphite/10">Reinforcement</th>
+            <td class="py-5 px-6 border-b border-graphite/10">Steel / metallic</td>
+            <td class="py-5 px-6 border-b border-graphite/10">Glass, carbon or aramid fibre</td>
+            <td class="py-5 px-6 border-b border-graphite/10 bg-[#FBF9F5] text-graphite">Natural fibre + hybrid architectures</td>
+          </tr>
+          <tr>
+            <th scope="row" class="py-5 pr-6 font-medium text-graphite border-b border-graphite/10">Corrosion</th>
+            <td class="py-5 px-6 border-b border-graphite/10">Needs protection and maintenance</td>
+            <td class="py-5 px-6 border-b border-graphite/10">Generally corrosion-resistant</td>
+            <td class="py-5 px-6 border-b border-graphite/10 bg-[#FBF9F5] text-graphite">Corrosion-resistant polymer composite</td>
+          </tr>
+          <tr>
+            <th scope="row" class="py-5 pr-6 font-medium text-graphite border-b border-graphite/10">Weight</th>
+            <td class="py-5 px-6 border-b border-graphite/10">Heavy — handling and transport penalty</td>
+            <td class="py-5 px-6 border-b border-graphite/10">Lightweight, high specific strength</td>
+            <td class="py-5 px-6 border-b border-graphite/10 bg-[#FBF9F5] text-graphite">Lightweight hybrid elements, high specific strength</td>
+          </tr>
+          <tr>
+            <th scope="row" class="py-5 pr-6 font-medium text-graphite border-b border-graphite/10">Carbon footprint</th>
+            <td class="py-5 px-6 border-b border-graphite/10">Energy-intensive production</td>
+            <td class="py-5 px-6 border-b border-graphite/10">Relies on energy-intensive synthetic fibre</td>
+            <td class="py-5 px-6 border-b border-graphite/10 bg-[#FBF9F5] text-graphite">Renewable fibre content, LCA-benchmarked</td>
+          </tr>
+          <tr>
+            <th scope="row" class="py-5 pr-6 font-medium text-graphite border-b border-graphite/10">Material tailoring</th>
+            <td class="py-5 px-6 border-b border-graphite/10">Grade and section selection</td>
+            <td class="py-5 px-6 border-b border-graphite/10">Fibre type, orientation and lay-up</td>
+            <td class="py-5 px-6 border-b border-graphite/10 bg-[#FBF9F5] text-graphite">Plus hybridisation and functional gradation</td>
+          </tr>
+          <tr>
+            <th scope="row" class="py-5 pr-6 font-medium text-graphite border-b border-graphite/20">Ductility</th>
+            <td class="py-5 px-6 border-b border-graphite/20">Ductile, but corrosion-prone</td>
+            <td class="py-5 px-6 border-b border-graphite/20">Can be brittle</td>
+            <td class="py-5 px-6 border-b border-graphite/20 bg-[#FBF9F5] text-graphite">Hybrid lay-up and toughened matrix for better energy absorption</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 8. CAPABILITIES ============ -->
+<section id="capabilities" aria-labelledby="cap-h" class="bg-graphite">
+  <div class="tracer-band hairfield" aria-hidden="true"><div class="tracer"></div></div>
+  <div class="mx-auto max-w-[1280px] px-6 md:px-10 pt-16 lg:pt-24 pb-24 lg:pb-32">
+    <div class="grid lg:grid-cols-12 gap-10 lg:gap-6">
+      <div class="lg:col-span-4 reveal">
+        <p class="label text-bronze-light flex items-center gap-3"><span class="tnum">05</span><span class="inline-block w-6 h-px bg-bronze"></span>Capabilities</p>
+      </div>
+      <div class="lg:col-span-8 reveal">
+        <h2 id="cap-h" class="font-medium text-[34px] sm:text-[42px] lg:text-[50px] leading-[1.04] tracking-[-0.03em]">From fibre to full-scale test — <span class="font-light text-bone/70">under one roof.</span></h2>
+        <p class="mt-7 max-w-[620px] text-[17px] leading-[1.65] text-mist">Fabrication, testing and structural design in the composites and structures laboratories of the Department of Civil Engineering, BITS Pilani.</p>
+      </div>
+    </div>
+
+    <div class="mt-16 lg:mt-20 grid md:grid-cols-2 gap-x-6 gap-y-14 lg:gap-x-10 lg:gap-y-16">
+      <!-- 01 VARTM -->
+      <article class="reveal">
+        <div class="reg">
+          <span class="tk tl"></span><span class="tk tr"></span><span class="tk bl"></span><span class="tk br"></span>
+          <div class="relative aspect-[4/3] overflow-hidden bg-deep">
+            <img src="assets/vartm-layup.jpg" alt="Top-down view of a woven fibre laminate under a vacuum bag during VARTM, with resin inlet and outlet lines." class="absolute inset-0 w-full h-full object-cover" style="object-position: 50% 50%;" width="1534" height="1495" loading="lazy">
+          </div>
+        </div>
+        <div class="mt-6 grid grid-cols-[56px_1fr] gap-x-4 border-t border-bone/15 pt-5">
+          <span class="tnum text-[13px] text-bronze-light tracking-[.12em] pt-1">01</span>
+          <div>
+            <h3 class="text-[20px] lg:text-[22px] font-medium tracking-[-0.01em]">Vacuum-assisted resin transfer moulding (VARTM)</h3>
+            <p class="mt-2 text-[15px] leading-[1.6] text-mist">Void-free laminates of natural, synthetic and hybrid fibre.</p>
+          </div>
+        </div>
+      </article>
+      <!-- 02 Filament winding -->
+      <article class="reveal">
+        <div class="reg">
+          <span class="tk tl"></span><span class="tk tr"></span><span class="tk bl"></span><span class="tk br"></span>
+          <div class="relative aspect-[4/3] overflow-hidden bg-plate">
+            <img src="assets/filament-winder.jpg" alt="Filament winding machine with fibre creel, traversing carriage and rotating mandrel." class="on-plate absolute inset-0 w-full h-full object-cover" style="object-position: left center;" width="805" height="360" loading="lazy">
+          </div>
+        </div>
+        <div class="mt-6 grid grid-cols-[56px_1fr] gap-x-4 border-t border-bone/15 pt-5">
+          <span class="tnum text-[13px] text-bronze-light tracking-[.12em] pt-1">02</span>
+          <div>
+            <h3 class="text-[20px] lg:text-[22px] font-medium tracking-[-0.01em]">Pultrusion &amp; filament winding</h3>
+            <p class="mt-2 text-[15px] leading-[1.6] text-mist">Continuous profiles, rebar and tubular sections.</p>
+          </div>
+        </div>
+      </article>
+      <!-- 03 Structural testing -->
+      <article class="reveal">
+        <div class="reg">
+          <span class="tk tl"></span><span class="tk tr"></span><span class="tk bl"></span><span class="tk br"></span>
+          <div class="relative aspect-[4/3] overflow-hidden bg-deep">
+            <img src="assets/test-rig.png" alt="Four-point bending test rig with a composite beam specimen, load frame and data acquisition station." class="absolute top-0 max-w-none h-auto" style="width:152.3%; left:-5.9%;" width="772" height="422" loading="lazy">
+          </div>
+        </div>
+        <div class="mt-6 grid grid-cols-[56px_1fr] gap-x-4 border-t border-bone/15 pt-5">
+          <span class="tnum text-[13px] text-bronze-light tracking-[.12em] pt-1">03</span>
+          <div>
+            <h3 class="text-[20px] lg:text-[22px] font-medium tracking-[-0.01em]">Structural testing</h3>
+            <p class="mt-2 text-[15px] leading-[1.6] text-mist">Four-point bending rig with a <span class="tnum">200 kN</span> servo-hydraulic actuator for full-scale beam tests.</p>
+          </div>
+        </div>
+      </article>
+      <!-- 04 FE modelling -->
+      <article class="reveal">
+        <div class="reg">
+          <span class="tk tl"></span><span class="tk tr"></span><span class="tk bl"></span><span class="tk br"></span>
+          <div class="relative aspect-[4/3] overflow-hidden bg-deep flex items-center justify-center">
+            <svg viewBox="0 0 520 390" class="w-full h-full" role="img" aria-labelledby="fe-t">
+              <title id="fe-t">Finite-element mesh of a beam under four-point bending, with a stress contour concentrated in the constant-moment region.</title>
+              <defs>
+                <linearGradient id="gStress" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0" stop-color="#C9A27A"/>
+                  <stop offset=".32" stop-color="#6B5440"/>
+                  <stop offset=".5" stop-color="#2A323B"/>
+                  <stop offset=".68" stop-color="#6B5440"/>
+                  <stop offset="1" stop-color="#9A6B3F"/>
+                </linearGradient>
+                <linearGradient id="gSpan" x1="0" y1="0" x2="1" y2="0">
+                  <stop offset="0" stop-color="#fff" stop-opacity="0"/>
+                  <stop offset=".33" stop-color="#fff" stop-opacity="1"/>
+                  <stop offset=".67" stop-color="#fff" stop-opacity="1"/>
+                  <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+                </linearGradient>
+                <mask id="mSpan"><rect x="30" y="150" width="460" height="72" fill="url(#gSpan)"/></mask>
+                <pattern id="pMesh" x="30" y="150" width="11.5" height="12" patternUnits="userSpaceOnUse">
+                  <path d="M11.5 0V12M0 12H11.5" fill="none" stroke="rgba(242,238,230,.22)" stroke-width=".6"/>
+                </pattern>
+                <linearGradient id="gLegend" x1="0" y1="0" x2="1" y2="0">
+                  <stop offset="0" stop-color="#2A323B"/><stop offset=".55" stop-color="#6B5440"/><stop offset="1" stop-color="#C9A27A"/>
+                </linearGradient>
+              </defs>
+              <g font-family="Archivo, sans-serif" font-size="10" fill="#8A8680" letter-spacing="1.6">
+                <text x="30" y="44">FE MODEL · 4-POINT BENDING</text>
+                <text x="490" y="44" text-anchor="end" class="tnum">40 × 6 ELEMENTS</text>
+              </g>
+              <line x1="30" y1="56" x2="490" y2="56" stroke="rgba(242,238,230,.12)"/>
+              <!-- loads -->
+              <g stroke="#F2EEE6" stroke-width="1.2" fill="none">
+                <path d="M183 96v46M178 136l5 7 5-7"/><path d="M337 96v46M332 136l5 7 5-7"/>
+                <path d="M183 96h154" stroke-opacity=".5"/>
+              </g>
+              <text x="260" y="88" font-family="Archivo, sans-serif" font-size="10" fill="#B9B4AB" text-anchor="middle" letter-spacing="1.6">P/2 · P/2</text>
+              <!-- beam -->
+              <rect x="30" y="150" width="460" height="72" fill="#232A32"/>
+              <rect x="30" y="150" width="460" height="72" fill="url(#gStress)" mask="url(#mSpan)"/>
+              <rect x="30" y="150" width="460" height="72" fill="url(#pMesh)"/>
+              <rect x="30" y="150" width="460" height="72" fill="none" stroke="rgba(242,238,230,.45)" stroke-width="1"/>
+              <line x1="30" y1="186" x2="490" y2="186" stroke="rgba(242,238,230,.25)" stroke-dasharray="3 4"/>
+              <!-- deformed shape -->
+              <path d="M30 230 Q260 262 490 230" fill="none" stroke="#C9A27A" stroke-width="1" stroke-dasharray="5 4"/>
+              <!-- supports -->
+              <g fill="none" stroke="#B9B4AB" stroke-width="1.2">
+                <path d="M52 222l-10 16h20z"/><path d="M468 222l-10 16h20z"/>
+                <path d="M38 244h28M454 244h28"/>
+              </g>
+              <!-- legend -->
+              <rect x="30" y="300" width="200" height="8" fill="url(#gLegend)"/>
+              <g font-family="Archivo, sans-serif" font-size="10" fill="#8A8680" letter-spacing="1.4">
+                <text x="30" y="326">σ MIN</text><text x="230" y="326" text-anchor="end">σ MAX</text>
+                <text x="490" y="308" text-anchor="end" fill="#C9A27A">— DEFORMED SHAPE</text>
+              </g>
+            </svg>
+          </div>
+        </div>
+        <div class="mt-6 grid grid-cols-[56px_1fr] gap-x-4 border-t border-bone/15 pt-5">
+          <span class="tnum text-[13px] text-bronze-light tracking-[.12em] pt-1">04</span>
+          <div>
+            <h3 class="text-[20px] lg:text-[22px] font-medium tracking-[-0.01em]">Finite-element modelling &amp; design</h3>
+            <p class="mt-2 text-[15px] leading-[1.6] text-mist">Nonlinear FE analysis and design guidelines for FRP and functionally graded structures.</p>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <!-- Process line -->
+    <div class="mt-24 lg:mt-28 reveal">
+      <p class="label text-bone/55">Process line</p>
+      <div class="mt-8 relative">
+      <div class="hidden lg:block absolute left-0 right-0 top-[7px] h-px bg-bone/20" aria-hidden="true"></div>
+      <ol class="relative grid lg:grid-cols-7 gap-y-0 lg:gap-x-4">
+        <li class="relative flex lg:block gap-5 pb-6 lg:pb-0 border-l lg:border-0 border-bone/20 pl-6 lg:pl-0">
+          <span class="absolute lg:static -left-[7.5px] top-0 block w-[14px] h-[14px] rounded-full border border-bronze bg-graphite"></span>
+          <div class="lg:mt-5"><span class="tnum text-[11px] text-bronze-light tracking-[.15em]">01</span><p class="mt-1.5 text-[14.5px] leading-[1.4] text-bone/90">Raw material sourcing</p></div>
+        </li>
+        <li class="relative flex lg:block gap-5 pb-6 lg:pb-0 border-l lg:border-0 border-bone/20 pl-6 lg:pl-0">
+          <span class="absolute lg:static -left-[7.5px] top-0 block w-[14px] h-[14px] rounded-full border border-bronze bg-graphite"></span>
+          <div class="lg:mt-5"><span class="tnum text-[11px] text-bronze-light tracking-[.15em]">02</span><p class="mt-1.5 text-[14.5px] leading-[1.4] text-bone/90">Fibre treatment</p></div>
+        </li>
+        <li class="relative flex lg:block gap-5 pb-6 lg:pb-0 border-l lg:border-0 border-bone/20 pl-6 lg:pl-0">
+          <span class="absolute lg:static -left-[7.5px] top-0 block w-[14px] h-[14px] rounded-full border border-bronze bg-graphite"></span>
+          <div class="lg:mt-5"><span class="tnum text-[11px] text-bronze-light tracking-[.15em]">03</span><p class="mt-1.5 text-[14.5px] leading-[1.4] text-bone/90">Composite manufacturing</p></div>
+        </li>
+        <li class="relative flex lg:block gap-5 pb-6 lg:pb-0 border-l lg:border-0 border-bone/20 pl-6 lg:pl-0">
+          <span class="absolute lg:static -left-[7.5px] top-0 block w-[14px] h-[14px] rounded-full border border-bronze bg-graphite"></span>
+          <div class="lg:mt-5"><span class="tnum text-[11px] text-bronze-light tracking-[.15em]">04</span><p class="mt-1.5 text-[14.5px] leading-[1.4] text-bone/90">Mechanical characterisation</p></div>
+        </li>
+        <li class="relative flex lg:block gap-5 pb-6 lg:pb-0 border-l lg:border-0 border-bone/20 pl-6 lg:pl-0">
+          <span class="absolute lg:static -left-[7.5px] top-0 block w-[14px] h-[14px] rounded-full border border-bronze bg-graphite"></span>
+          <div class="lg:mt-5"><span class="tnum text-[11px] text-bronze-light tracking-[.15em]">05</span><p class="mt-1.5 text-[14.5px] leading-[1.4] text-bone/90">Component design &amp; prototyping</p></div>
+        </li>
+        <li class="relative flex lg:block gap-5 pb-6 lg:pb-0 border-l lg:border-0 border-bone/20 pl-6 lg:pl-0">
+          <span class="absolute lg:static -left-[7.5px] top-0 block w-[14px] h-[14px] rounded-full border border-bronze bg-graphite"></span>
+          <div class="lg:mt-5"><span class="tnum text-[11px] text-bronze-light tracking-[.15em]">06</span><p class="mt-1.5 text-[14.5px] leading-[1.4] text-bone/90">Application validation</p></div>
+        </li>
+        <li class="relative flex lg:block gap-5 border-l lg:border-0 border-transparent pl-6 lg:pl-0">
+          <span class="absolute lg:static -left-[7.5px] top-0 block w-[14px] h-[14px] rounded-full border border-bronze bg-graphite"></span>
+          <div class="lg:mt-5"><span class="tnum text-[11px] text-bronze-light tracking-[.15em]">07</span><p class="mt-1.5 text-[14.5px] leading-[1.4] text-bone/90">Scale-up</p></div>
+        </li>
+      </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 9. APPLICATIONS ============ -->
+<section id="applications" aria-labelledby="apps-h" class="bg-bone text-graphite">
+  <div class="mx-auto max-w-[1280px] px-6 md:px-10 py-24 lg:py-32">
+    <div class="grid lg:grid-cols-12 gap-10 lg:gap-6">
+      <div class="lg:col-span-4 reveal">
+        <p class="label text-bronze-dark flex items-center gap-3"><span class="tnum">06</span><span class="inline-block w-6 h-px bg-bronze"></span>Applications</p>
+      </div>
+      <h2 id="apps-h" class="lg:col-span-8 font-medium text-[34px] sm:text-[42px] lg:text-[50px] leading-[1.04] tracking-[-0.03em] reveal">Built for the industries that run on composites.</h2>
+    </div>
+
+    <ul class="mt-16 border-t border-graphite/20">
+      <li class="app-row relative grid grid-cols-[44px_1fr] lg:grid-cols-12 gap-x-4 lg:gap-x-6 gap-y-2 py-7 lg:py-8 border-b border-graphite/15 reveal">
+        <span class="row-tracer absolute left-0 right-0 -bottom-px h-px bg-bronze" aria-hidden="true"></span>
+        <span class="tnum text-[13px] text-bronze-dark tracking-[.12em] lg:col-span-1 pt-1.5">01</span>
+        <h3 class="text-[24px] lg:text-[30px] font-medium tracking-[-0.02em] lg:col-span-4">Construction</h3>
+        <p class="col-start-2 lg:col-start-auto lg:col-span-7 text-[16px] leading-[1.6] text-slate lg:pt-2">Wall panels, cladding, false ceilings, partition systems</p>
+      </li>
+      <li class="app-row relative grid grid-cols-[44px_1fr] lg:grid-cols-12 gap-x-4 lg:gap-x-6 gap-y-2 py-7 lg:py-8 border-b border-graphite/15 reveal">
+        <span class="row-tracer absolute left-0 right-0 -bottom-px h-px bg-bronze" aria-hidden="true"></span>
+        <span class="tnum text-[13px] text-bronze-dark tracking-[.12em] lg:col-span-1 pt-1.5">02</span>
+        <h3 class="text-[24px] lg:text-[30px] font-medium tracking-[-0.02em] lg:col-span-4">Automotive</h3>
+        <p class="col-start-2 lg:col-start-auto lg:col-span-7 text-[16px] leading-[1.6] text-slate lg:pt-2">Door trims, seat-backs, underbody covers, boot panels</p>
+      </li>
+      <li class="app-row relative grid grid-cols-[44px_1fr] lg:grid-cols-12 gap-x-4 lg:gap-x-6 gap-y-2 py-7 lg:py-8 border-b border-graphite/15 reveal">
+        <span class="row-tracer absolute left-0 right-0 -bottom-px h-px bg-bronze" aria-hidden="true"></span>
+        <span class="tnum text-[13px] text-bronze-dark tracking-[.12em] lg:col-span-1 pt-1.5">03</span>
+        <h3 class="text-[24px] lg:text-[30px] font-medium tracking-[-0.02em] lg:col-span-4">Rail &amp; transport</h3>
+        <p class="col-start-2 lg:col-start-auto lg:col-span-7 text-[16px] leading-[1.6] text-slate lg:pt-2">Sidewall, ceiling, floor and partition panels</p>
+      </li>
+      <li class="app-row relative grid grid-cols-[44px_1fr] lg:grid-cols-12 gap-x-4 lg:gap-x-6 gap-y-2 py-7 lg:py-8 border-b border-graphite/15 reveal">
+        <span class="row-tracer absolute left-0 right-0 -bottom-px h-px bg-bronze" aria-hidden="true"></span>
+        <span class="tnum text-[13px] text-bronze-dark tracking-[.12em] lg:col-span-1 pt-1.5">04</span>
+        <h3 class="text-[24px] lg:text-[30px] font-medium tracking-[-0.02em] lg:col-span-4">Aerospace</h3>
+        <p class="col-start-2 lg:col-start-auto lg:col-span-7 text-[16px] leading-[1.6] text-slate lg:pt-2">Cabin panels, interior partitions, overhead compartments, acoustic panels</p>
+      </li>
+      <li class="app-row relative grid grid-cols-[44px_1fr] lg:grid-cols-12 gap-x-4 lg:gap-x-6 gap-y-2 py-7 lg:py-8 border-b border-graphite/15 reveal">
+        <span class="row-tracer absolute left-0 right-0 -bottom-px h-px bg-bronze" aria-hidden="true"></span>
+        <span class="tnum text-[13px] text-bronze-dark tracking-[.12em] lg:col-span-1 pt-1.5">05</span>
+        <h3 class="text-[24px] lg:text-[30px] font-medium tracking-[-0.02em] lg:col-span-4">Packaging &amp; industrial</h3>
+        <p class="col-start-2 lg:col-start-auto lg:col-span-7 text-[16px] leading-[1.6] text-slate lg:pt-2">Crates, protective cases, equipment housings, pallets</p>
+      </li>
+    </ul>
+
+    <div class="mt-10 grid lg:grid-cols-12 gap-4 lg:gap-6 items-baseline reveal">
+      <p class="lg:col-span-5 label text-slate">Also exploring</p>
+      <ul class="lg:col-span-7 flex flex-wrap gap-2">
+        <li class="text-[13px] text-graphite/80 border border-graphite/20 px-3.5 py-1.5">acoustics</li>
+        <li class="text-[13px] text-graphite/80 border border-graphite/20 px-3.5 py-1.5">healthcare equipment</li>
+        <li class="text-[13px] text-graphite/80 border border-graphite/20 px-3.5 py-1.5">sports</li>
+        <li class="text-[13px] text-graphite/80 border border-graphite/20 px-3.5 py-1.5">marine</li>
+        <li class="text-[13px] text-graphite/80 border border-graphite/20 px-3.5 py-1.5">defence</li>
+        <li class="text-[13px] text-graphite/80 border border-graphite/20 px-3.5 py-1.5">agricultural equipment</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 10. SUSTAINABILITY BAND ============ -->
+<section aria-labelledby="sus-h" class="relative bg-deep overflow-hidden">
+  <div class="absolute inset-0 hairfield opacity-80" aria-hidden="true"></div>
+  <div class="tracer" style="top:64px" aria-hidden="true"></div>
+  <div class="relative mx-auto max-w-[1280px] px-6 md:px-10 pt-36 pb-24 lg:pt-40 lg:pb-32">
+    <h2 id="sus-h" class="max-w-[980px] font-medium text-[34px] sm:text-[44px] lg:text-[58px] leading-[1.03] tracking-[-0.035em] reveal">Lower embodied carbon. <span class="font-light text-bone/70">Local fibre.</span> Green-building ready.</h2>
+    <ul class="mt-16 grid md:grid-cols-3 gap-0 border-t border-bone/15">
+      <li class="py-8 md:pr-10 md:border-r border-b md:border-b-0 border-bone/15 reveal">
+        <span class="tnum text-[11px] text-bronze-light tracking-[.15em]">A</span>
+        <p class="mt-4 text-[17px] leading-[1.55] text-bone/90">Renewable fibre content, benchmarked by life-cycle assessment.</p>
+      </li>
+      <li class="py-8 md:px-10 md:border-r border-b md:border-b-0 border-bone/15 reveal">
+        <span class="tnum text-[11px] text-bronze-light tracking-[.15em]">B</span>
+        <p class="mt-4 text-[17px] leading-[1.55] text-bone/90">Designed to contribute to local-material credits under IGBC and GRIHA.</p>
+      </li>
+      <li class="py-8 md:pl-10 reveal">
+        <span class="tnum text-[11px] text-bronze-light tracking-[.15em]">C</span>
+        <p class="mt-4 text-[17px] leading-[1.55] text-bone/90">Built on India's domestic natural-fibre ecosystem — made in India, for India.</p>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ 11. READINESS & ROADMAP ============ -->
+<section aria-labelledby="road-h" class="bg-bone text-graphite">
+  <div class="mx-auto max-w-[1280px] px-6 md:px-10 py-24 lg:py-32">
+    <div class="grid lg:grid-cols-12 gap-10 lg:gap-6">
+      <div class="lg:col-span-4 reveal">
+        <p class="label text-bronze-dark flex items-center gap-3"><span class="tnum">07</span><span class="inline-block w-6 h-px bg-bronze"></span>Where we are</p>
+      </div>
+      <h2 id="road-h" class="lg:col-span-8 font-medium text-[34px] sm:text-[42px] lg:text-[50px] leading-[1.04] tracking-[-0.03em] reveal">From laboratory to production line.</h2>
+    </div>
+
+    <!-- Stage tracker -->
+    <div class="mt-16 lg:mt-20 reveal">
+      <div class="relative">
+      <div class="hidden sm:block absolute top-[9px] left-[9px] right-[calc(25%-9px)] h-px bg-graphite/20" aria-hidden="true"></div>
+      <ol class="relative grid grid-cols-1 sm:grid-cols-4 gap-y-8" aria-label="Company stage">
+        <li class="relative pl-10 sm:pl-0" aria-current="step">
+          <span class="node-current absolute sm:relative left-0 top-0 block w-[19px] h-[19px] rounded-full bg-bronze ring-4 ring-bone"></span>
+          <p class="sm:mt-6 label !text-[10px] text-bronze-dark">Current stage</p>
+          <p class="mt-2 text-[19px] lg:text-[21px] font-medium tracking-[-0.01em]">R&amp;D &amp; prototyping</p>
+        </li>
+        <li class="relative pl-10 sm:pl-0">
+          <span class="absolute sm:relative left-0 top-0 block w-[19px] h-[19px] rounded-full border border-graphite/40 bg-bone ring-4 ring-bone"></span>
+          <p class="sm:mt-6 label !text-[10px] text-slate">Next</p>
+          <p class="mt-2 text-[19px] lg:text-[21px] font-medium tracking-[-0.01em] text-graphite/70">Industry validation</p>
+        </li>
+        <li class="relative pl-10 sm:pl-0">
+          <span class="absolute sm:relative left-0 top-0 block w-[19px] h-[19px] rounded-full border border-graphite/40 bg-bone ring-4 ring-bone"></span>
+          <p class="sm:mt-6 label !text-[10px] text-slate">Stage 03</p>
+          <p class="mt-2 text-[19px] lg:text-[21px] font-medium tracking-[-0.01em] text-graphite/70">Pilot orders</p>
+        </li>
+        <li class="relative pl-10 sm:pl-0">
+          <span class="absolute sm:relative left-0 top-0 block w-[19px] h-[19px] rounded-full border border-graphite/40 bg-bone ring-4 ring-bone"></span>
+          <p class="sm:mt-6 label !text-[10px] text-slate">Stage 04</p>
+          <p class="mt-2 text-[19px] lg:text-[21px] font-medium tracking-[-0.01em] text-graphite/70">Repeat production</p>
+        </li>
+      </ol>
+      </div>
+    </div>
+
+    <!-- 18-month roadmap -->
+    <div class="mt-20 lg:mt-24 reveal">
+      <div class="flex items-baseline justify-between border-b border-graphite/20 pb-4">
+        <p class="label text-slate">18-month roadmap</p>
+        <p class="tnum text-[12px] text-slate tracking-[.1em]">M0 — M18</p>
+      </div>
+      <div class="grid grid-cols-3 gap-[3px] mt-[3px]" aria-hidden="true">
+        <div class="h-[4px] bg-bronze"></div><div class="h-[4px] bg-graphite/25"></div><div class="h-[4px] bg-graphite/15"></div>
+      </div>
+      <div class="mt-10 grid md:grid-cols-3 gap-12 md:gap-6 lg:gap-10">
+        <article>
+          <p class="tnum font-light text-[52px] lg:text-[64px] leading-none tracking-[-0.04em]">0–6</p>
+          <p class="mt-2 label !text-[10px] text-slate">Months</p>
+          <h3 class="mt-6 text-[20px] font-medium tracking-[-0.01em]">Product prioritisation</h3>
+          <p class="mt-3 text-[15px] leading-[1.6] text-slate">Select the first two to three market product families; shortlist fibre, matrix and hybrid architectures.</p>
+        </article>
+        <article>
+          <p class="tnum font-light text-[52px] lg:text-[64px] leading-none tracking-[-0.04em]">6–12</p>
+          <p class="mt-2 label !text-[10px] text-slate">Months</p>
+          <h3 class="mt-6 text-[20px] font-medium tracking-[-0.01em]">Characterisation &amp; durability</h3>
+          <p class="mt-3 text-[15px] leading-[1.6] text-slate">Mechanical baseline plus moisture, thermal and environmental durability testing.</p>
+        </article>
+        <article>
+          <p class="tnum font-light text-[52px] lg:text-[64px] leading-none tracking-[-0.04em]">12–18</p>
+          <p class="mt-2 label !text-[10px] text-slate">Months</p>
+          <h3 class="mt-6 text-[20px] font-medium tracking-[-0.01em]">Prototype launch</h3>
+          <p class="mt-3 text-[15px] leading-[1.6] text-slate">Wall panels, plates and shells, beam sections and tubular sections.</p>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 12. WORK WITH US ============ -->
+<section aria-labelledby="work-h" class="bg-graphite">
+  <div class="tracer-band hairfield" aria-hidden="true"><div class="tracer"></div></div>
+  <div class="mx-auto max-w-[1280px] px-6 md:px-10 pt-16 lg:pt-24 pb-24 lg:pb-32">
+    <div class="grid lg:grid-cols-12 gap-10 lg:gap-6">
+      <div class="lg:col-span-4 reveal">
+        <p class="label text-bronze-light flex items-center gap-3"><span class="tnum">08</span><span class="inline-block w-6 h-px bg-bronze"></span>Work with us</p>
+      </div>
+      <h2 id="work-h" class="lg:col-span-8 font-medium text-[34px] sm:text-[42px] lg:text-[50px] leading-[1.04] tracking-[-0.03em] reveal">Three ways to partner.</h2>
+    </div>
+
+    <div class="mt-16 grid md:grid-cols-3 border-t border-l border-bone/15">
+      <article class="group relative border-r border-b border-bone/15 p-8 lg:p-10 flex flex-col min-h-[320px] hover:bg-deep/60 transition-colors reveal">
+        <span class="absolute left-0 right-0 top-0 h-px bg-bronze scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500" aria-hidden="true"></span>
+        <span class="tnum text-[12px] text-bronze-light tracking-[.15em]">01</span>
+        <h3 class="mt-8 text-[24px] font-medium tracking-[-0.015em]">Industry &amp; OEMs</h3>
+        <p class="mt-4 text-[15.5px] leading-[1.6] text-mist flex-1">Joint development, customer-specific prototypes and application qualification.</p>
+        <a href="#contact" class="mt-10 inline-flex items-center gap-3 text-[14px] font-medium text-bone"><span class="border-b border-bone/30 group-hover:border-bronze-light pb-1 transition-colors">Start a development project</span><svg width="14" height="10" viewBox="0 0 14 10" aria-hidden="true" class="text-bronze-light"><path d="M0 5h12M8 1l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.3"/></svg></a>
+      </article>
+      <article class="group relative border-r border-b border-bone/15 p-8 lg:p-10 flex flex-col min-h-[320px] hover:bg-deep/60 transition-colors reveal">
+        <span class="absolute left-0 right-0 top-0 h-px bg-bronze scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500" aria-hidden="true"></span>
+        <span class="tnum text-[12px] text-bronze-light tracking-[.15em]">02</span>
+        <h3 class="mt-8 text-[24px] font-medium tracking-[-0.015em]">Investors &amp; grant bodies</h3>
+        <p class="mt-4 text-[15.5px] leading-[1.6] text-mist flex-1">Climate-tech, deep-tech and advanced-materials innovation from India.</p>
+        <a href="#contact" class="mt-10 inline-flex items-center gap-3 text-[14px] font-medium text-bone"><span class="border-b border-bone/30 group-hover:border-bronze-light pb-1 transition-colors">Request our investor brief</span><svg width="14" height="10" viewBox="0 0 14 10" aria-hidden="true" class="text-bronze-light"><path d="M0 5h12M8 1l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.3"/></svg></a>
+      </article>
+      <article class="group relative border-r border-b border-bone/15 p-8 lg:p-10 flex flex-col min-h-[320px] hover:bg-deep/60 transition-colors reveal">
+        <span class="absolute left-0 right-0 top-0 h-px bg-bronze scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500" aria-hidden="true"></span>
+        <span class="tnum text-[12px] text-bronze-light tracking-[.15em]">03</span>
+        <h3 class="mt-8 text-[24px] font-medium tracking-[-0.015em]">Researchers &amp; institutions</h3>
+        <p class="mt-4 text-[15.5px] leading-[1.6] text-mist flex-1">Testing, characterisation and research collaboration.</p>
+        <a href="#contact" class="mt-10 inline-flex items-center gap-3 text-[14px] font-medium text-bone"><span class="border-b border-bone/30 group-hover:border-bronze-light pb-1 transition-colors">Collaborate with us</span><svg width="14" height="10" viewBox="0 0 14 10" aria-hidden="true" class="text-bronze-light"><path d="M0 5h12M8 1l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.3"/></svg></a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 13. TEAM ============ -->
+<section id="team" aria-labelledby="team-h" class="bg-bone text-graphite">
+  <div class="mx-auto max-w-[1280px] px-6 md:px-10 py-24 lg:py-32">
+    <div class="grid lg:grid-cols-12 gap-10 lg:gap-6">
+      <div class="lg:col-span-4 reveal">
+        <p class="label text-bronze-dark flex items-center gap-3"><span class="tnum">09</span><span class="inline-block w-6 h-px bg-bronze"></span>Founders</p>
+      </div>
+      <h2 id="team-h" class="lg:col-span-8 font-medium text-[34px] sm:text-[42px] lg:text-[50px] leading-[1.04] tracking-[-0.03em] reveal">Engineers first.</h2>
+    </div>
+
+    <div class="mt-16 grid lg:grid-cols-2 border-t border-graphite/20">
+      <article class="py-10 lg:pr-12 lg:border-r border-b lg:border-b-0 border-graphite/15 flex flex-col sm:flex-row gap-8 reveal">
+        <div class="shrink-0">
+          <div class="reg w-[160px]">
+            <span class="tk tl"></span><span class="tk br"></span>
+            <div class="portrait">
+              <img src="assets/prof-singh.png" alt="Portrait of Prof. Shamsher Bahadur Singh" class="absolute max-w-none h-auto" style="width:185%; left:-27.7%; top:-1%;" width="1526" height="1727" loading="lazy">
+            </div>
+          </div>
+        </div>
+        <div>
+          <p class="label !text-[10px] text-bronze-dark">Co-Founder</p>
+          <h3 class="mt-3 text-[24px] lg:text-[26px] font-medium tracking-[-0.015em]">Prof. Shamsher Bahadur Singh</h3>
+          <p class="mt-2 text-[15px] leading-[1.55] text-graphite/85">Senior Professor &amp; Shri S. K. Birla Chair Professor, Department of Civil Engineering, BITS Pilani</p>
+          <p class="mt-4 text-[12.5px] leading-[1.7] tracking-[.02em] text-slate border-y border-graphite/10 py-3">Ph.D. (IIT Kanpur) · P.E. (Michigan, USA) · Fellow ASCE, SEI, ICE (UK) · Member, ACI Committee 440</p>
+          <p class="mt-4 text-[15px] leading-[1.6] text-slate">Advanced composite materials, FRP structures, functionally graded composites and finite-element modelling. Leads technology vision, structural FRP architecture and product validation.</p>
+        </div>
+      </article>
+      <article class="py-10 lg:pl-12 flex flex-col sm:flex-row gap-8 reveal">
+        <div class="shrink-0">
+          <div class="reg w-[160px]">
+            <span class="tk tl"></span><span class="tk br"></span>
+            <div class="portrait">
+              <img src="assets/dr-muthukumar.jpg" alt="Portrait of Dr. G. Muthukumar" class="absolute inset-0 w-full h-full object-cover" style="object-position: 50% 20%;" width="192" height="233" loading="lazy">
+            </div>
+          </div>
+        </div>
+        <div>
+          <p class="label !text-[10px] text-bronze-dark">Co-Founder</p>
+          <h3 class="mt-3 text-[24px] lg:text-[26px] font-medium tracking-[-0.015em]">Dr. G. Muthukumar</h3>
+          <p class="mt-2 text-[15px] leading-[1.55] text-graphite/85">Associate Professor, Department of Civil Engineering, BITS Pilani</p>
+          <p class="mt-4 text-[12.5px] leading-[1.7] tracking-[.02em] text-slate border-y border-graphite/10 py-3">Ph.D. &amp; M.E., Structural Engineering (BITS Pilani)</p>
+          <p class="mt-4 text-[15px] leading-[1.6] text-slate">Earthquake-resistant design of concrete structures, fire resistance and nonlinear finite-element analysis. Leads structural analysis, prototype assessment and product development.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 14. CONTACT ============ -->
+<section id="contact" aria-labelledby="contact-h" class="bg-graphite">
+  <div class="tracer-band hairfield" aria-hidden="true"><div class="tracer"></div></div>
+  <div class="mx-auto max-w-[1280px] px-6 md:px-10 pt-16 lg:pt-24 pb-24 lg:pb-32">
+    <div class="grid lg:grid-cols-12 gap-14 lg:gap-6">
+      <div class="lg:col-span-5 reveal">
+        <p class="label text-bronze-light flex items-center gap-3"><span class="tnum">10</span><span class="inline-block w-6 h-px bg-bronze"></span>Contact</p>
+        <h2 id="contact-h" class="mt-8 font-medium text-[34px] sm:text-[42px] lg:text-[48px] leading-[1.05] tracking-[-0.03em]">Have a component you want to make lighter and greener?</h2>
+        <p class="mt-6 text-[17px] leading-[1.6] text-mist">Tell us what you're working on. We reply within two working days.</p>
+
+        <div class="mt-14 space-y-8">
+          <div class="border-t border-bone/15 pt-5">
+            <p class="text-[16px] font-medium">Prof. Shamsher Bahadur Singh</p>
+            <p class="mt-1 text-[14.5px]"><a href="mailto:sbsingh@pilani.bits-pilani.ac.in" class="text-bronze-light hover:text-bone break-all">sbsingh@pilani.bits-pilani.ac.in</a></p>
+          </div>
+          <div class="border-t border-bone/15 pt-5">
+            <p class="text-[16px] font-medium">Dr. G. Muthukumar</p>
+            <p class="mt-1 text-[14.5px]"><a href="mailto:muthug@pilani.bits-pilani.ac.in" class="text-bronze-light hover:text-bone break-all">muthug@pilani.bits-pilani.ac.in</a></p>
+          </div>
+          <address class="not-italic border-t border-bone/15 pt-5 text-[14.5px] leading-[1.6] text-mist">Department of Civil Engineering, BITS Pilani, Pilani <span class="tnum">333031</span>, Rajasthan, India</address>
+        </div>
+      </div>
+
+      <div class="lg:col-span-6 lg:col-start-7 reveal">
+        <form id="enquiry" class="relative bg-deep border border-bone/[.08] p-7 sm:p-10" novalidate>
+          <div class="absolute left-0 right-0 top-0 h-px bg-bronze" aria-hidden="true"></div>
+          <div class="grid sm:grid-cols-2 gap-x-8 gap-y-7">
+            <div>
+              <label for="f-name" class="label !text-[10px] text-bone/60">Name</label>
+              <input id="f-name" name="name" type="text" autocomplete="name" class="field mt-1">
+            </div>
+            <div>
+              <label for="f-org" class="label !text-[10px] text-bone/60">Organisation</label>
+              <input id="f-org" name="organisation" type="text" autocomplete="organization" class="field mt-1">
+            </div>
+            <div>
+              <label for="f-email" class="label !text-[10px] text-bone/60">Email</label>
+              <input id="f-email" name="email" type="email" autocomplete="email" class="field mt-1">
+            </div>
+            <div>
+              <label for="f-role" class="label !text-[10px] text-bone/60">I am a…</label>
+              <select id="f-role" name="role" class="field mt-1">
+                <option>Industry / OEM</option>
+                <option>Investor</option>
+                <option>Government / grant body</option>
+                <option>Researcher / academic</option>
+                <option>Architect / specifier</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="sm:col-span-2">
+              <label for="f-msg" class="label !text-[10px] text-bone/60">Message</label>
+              <textarea id="f-msg" name="message" rows="4" class="field mt-1 resize-y"></textarea>
+            </div>
+          </div>
+          <div class="mt-10 flex flex-wrap items-center gap-x-6 gap-y-3">
+            <button type="submit" class="inline-flex items-center gap-3 bg-bronze-btn hover:bg-bronze-dark text-bone font-semibold text-[14px] tracking-[.02em] h-12 px-7 transition-colors">
+              Send enquiry
+              <svg width="14" height="10" viewBox="0 0 14 10" aria-hidden="true"><path d="M0 5h12M8 1l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.3"/></svg>
+            </button>
+            <p class="text-[12.5px] text-bone/55">Demo form — not yet connected.</p>
+          </div>
+          <p id="form-status" role="status" aria-live="polite" class="hidden mt-6 text-[13.5px] text-bone border-l-2 border-bronze pl-4 py-1">Demo form — not yet connected. No data was sent.</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ 15. FOOTER ============ -->
+<footer class="relative bg-deep border-t border-bone/[.06]">
+  <div class="mx-auto max-w-[1280px] px-6 md:px-10 pt-16 pb-24 sm:pb-16">
+    <div class="grid lg:grid-cols-12 gap-10 lg:gap-6">
+      <div class="lg:col-span-5">
+        <a href="#top" class="inline-flex items-center gap-3 text-bone" aria-label="NaturoFiber — back to top">
+          <svg viewBox="0 0 11 8" class="h-[16px] w-auto" aria-hidden="true">
+            <rect x="0" y="0" width="9" height="1.6" fill="currentColor"/>
+            <rect x="2" y="3.2" width="9" height="1.6" fill="#9A6B3F"/>
+            <rect x="0" y="6.4" width="9" height="1.6" fill="currentColor"/>
+          </svg>
+          <span class="text-[17px] uppercase tracking-[.04em] leading-none"><span class="font-normal">Naturo</span><span class="font-bold">Fiber</span></span>
+        </a>
+        <p class="mt-5 text-[14px] text-mist">NaturoFiber Private Limited · Pilani, Rajasthan</p>
+      </div>
+      <nav aria-label="Footer" class="lg:col-span-7">
+        <ul class="flex flex-wrap lg:justify-end gap-x-8 gap-y-3 text-[14px] text-bone/75">
+          <li><a href="#technology" class="hover:text-bone">Technology</a></li>
+          <li><a href="#products" class="hover:text-bone">Products</a></li>
+          <li><a href="#applications" class="hover:text-bone">Applications</a></li>
+          <li><a href="#capabilities" class="hover:text-bone">Capabilities</a></li>
+          <li><a href="#team" class="hover:text-bone">Team</a></li>
+          <li><a href="#contact" class="hover:text-bone">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="relative mt-14 h-[42px] hairfield" aria-hidden="true"><div class="tracer" style="top:21px"></div></div>
+    <div class="mt-6 flex flex-wrap justify-between gap-4 text-[12.5px] text-bone/50">
+      <p>© <span class="tnum">2026</span> NaturoFiber Private Limited. All rights reserved.</p>
+      <p class="label !text-[10px] !font-medium">Natural fibre. Structural grade.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- Presentation badge -->
+<div class="fixed bottom-4 right-4 z-[60] flex items-center gap-3 rounded-full bg-deep/90 backdrop-blur border border-bone/15 pl-3.5 pr-1.5 py-1.5 text-[11.5px] text-bone/80 shadow-lg shadow-black/20">
+  <span class="inline-block w-2 h-px bg-bronze" aria-hidden="true"></span>
+  <span>Direction A · Tracer</span>
+  <a href="index.html" class="rounded-full bg-bone/10 hover:bg-bone/20 text-bone px-3 py-1 transition-colors">All directions</a>
+</div>
+
+<script>
+(function () {
+  var root = document.documentElement;
+  root.classList.add('js');
+
+  // Header background on scroll
+  var header = document.getElementById('site-header');
+  function onScroll() { header.classList.toggle('scrolled', window.scrollY > 24); }
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  // Mobile menu
+  var btn = document.getElementById('menu-btn');
+  var menu = document.getElementById('mobile-menu');
+  function setMenu(open) {
+    menu.classList.toggle('hidden', !open);
+    btn.setAttribute('aria-expanded', String(open));
+    btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    if (open) header.classList.add('scrolled'); else onScroll();
+  }
+  btn.addEventListener('click', function () { setMenu(menu.classList.contains('hidden')); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setMenu(false); });
+
+  // Smooth scroll for in-page links
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  document.querySelectorAll('a[href^="#"]').forEach(function (a) {
+    a.addEventListener('click', function (e) {
+      var id = a.getAttribute('href');
+      var target = id.length > 1 ? document.querySelector(id) : null;
+      if (!target) return;
+      e.preventDefault();
+      setMenu(false);
+      var y = target.getBoundingClientRect().top + window.scrollY - (id === '#top' ? 0 : 72);
+      window.scrollTo({ top: Math.max(0, y), behavior: reduce ? 'auto' : 'smooth' });
+      history.replaceState(null, '', id);
+    });
+  });
+
+  // Reveal on scroll
+  var items = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window && !reduce) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); }
+      });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+    items.forEach(function (el) { io.observe(el); });
+  } else {
+    items.forEach(function (el) { el.classList.add('in'); });
+  }
+
+  // Demo form
+  var form = document.getElementById('enquiry');
+  var status = document.getElementById('form-status');
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    status.classList.remove('hidden');
+  });
+})();
+</script>
+</body>
+</html>

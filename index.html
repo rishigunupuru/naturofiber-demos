@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NaturoFiber — Website design directions</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 11 8'%3E%3Crect width='9' height='1.6' fill='%231E242B'/%3E%3Crect x='2' y='3.2' width='9' height='1.6' fill='%239A6B3F'/%3E%3Crect y='6.4' width='9' height='1.6' fill='%231E242B'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  html { font-family: 'Inter', system-ui, sans-serif; }
+  .thumb { position: relative; aspect-ratio: 16 / 10; overflow: hidden; background: #ECEAE4; }
+  .thumb iframe { position: absolute; top: 0; left: 0; width: 1440px; height: 900px; border: 0; transform-origin: 0 0; pointer-events: none; }
+  .thumb::after { content: ''; position: absolute; inset: 0; }
+  .sw { width: 22px; height: 22px; border-radius: 999px; box-shadow: inset 0 0 0 1px rgba(0,0,0,.12); }
+  .card:hover .thumb iframe { filter: brightness(1.02); }
+  .card { transition: transform .25s ease, box-shadow .25s ease; }
+  .card:hover { transform: translateY(-3px); box-shadow: 0 18px 40px -18px rgba(20,24,30,.35); }
+</style>
+</head>
+<body class="bg-[#F5F4F0] text-[#16191D] antialiased">
+<div style="position:fixed;top:10px;right:10px;z-index:9999;background:#FFF4CC;color:#4A3B00;font:600 11px/1.2 Inter,system-ui,sans-serif;letter-spacing:.08em;text-transform:uppercase;padding:6px 10px;border-radius:999px;box-shadow:0 2px 10px rgba(0,0,0,.15)">Design draft · not the final website</div>
+
+<header class="max-w-[1320px] mx-auto px-6 pt-12 pb-8">
+  <div class="flex items-center gap-3 text-[11px] tracking-[.22em] uppercase text-[#9A6B3F]">
+    <svg viewBox="0 0 11 8" class="w-5 h-4"><rect width="9" height="1.6" fill="#16191D"/><rect x="2" y="3.2" width="9" height="1.6" fill="#9A6B3F"/><rect y="6.4" width="9" height="1.6" fill="#16191D"/></svg>
+    NaturoFiber Private Limited · Website design review
+  </div>
+  <h1 class="mt-4 text-4xl md:text-5xl font-semibold tracking-tight">Four design directions</h1>
+  <p class="mt-4 max-w-3xl text-[17px] leading-relaxed text-[#4A5058]">
+    Every direction uses the <strong>same homepage content</strong>, so the choice is purely about look and feel.
+    Click any direction to open the full page. Directions can also be mixed — for example, one direction's layout with another's colours.
+  </p>
+</header>
+
+<main class="max-w-[1320px] mx-auto px-6 pb-16">
+  <div id="grid" class="grid md:grid-cols-2 gap-8"></div>
+
+  <section class="mt-14 grid gap-6 max-w-2xl">
+    <div class="rounded-2xl bg-white p-6 border border-black/5">
+      <div class="text-[11px] tracking-[.18em] uppercase text-[#9A6B3F]">For discussion</div>
+      <h2 class="mt-2 text-lg font-semibold">Questions for review</h2>
+      <ol class="mt-3 space-y-2 text-[14px] text-[#3C4249] list-decimal pl-5">
+        <li>Which direction — or which combination?</li>
+        <li>Which 2–3 product families should the site lead with?</li>
+        <li>Who is the main audience for the next 12 months: industry, investors or grant bodies?</li>
+        <li>Which fibres and resins may we name publicly?</li>
+        <li>Is the tagline “Natural fibre. Structural grade.” approved?</li>
+      </ol>
+    </div>
+  </section>
+</main>
+
+<footer class="border-t border-black/10">
+  <div class="max-w-[1320px] mx-auto px-6 py-6 text-[12px] text-[#6B7075] flex flex-wrap gap-2 justify-between">
+    <span>NaturoFiber Private Limited · Pilani, Rajasthan</span>
+    <span>Design review draft · November 2026</span>
+  </div>
+</footer>
+
+<script>
+  const DIRECTIONS = [
+    { id: 'A', name: 'Tracer', file: 'a-tracer.html',
+      line: 'Precision engineering. Dark, quiet, premium — continuous with the visiting card.',
+      swatches: ['#1E242B', '#9A6B3F', '#F2EEE6', '#5A6672'], type: 'Archivo',
+      best: 'Every audience; strongest brand consistency' },
+    { id: 'B', name: 'Materials Lab', file: 'b-lab.html',
+      line: 'Scientific clarity. Light, Swiss-grid, reads like a beautifully typeset datasheet.',
+      swatches: ['#FAFAF7', '#111418', '#1F4BD8', '#B08850'], type: 'Inter Tight + IBM Plex Mono',
+      best: 'Industry R&D heads, deep-tech investors' },
+    { id: 'C', name: 'Industrial', file: 'c-industrial.html',
+      line: 'Bold advanced manufacturing. High contrast, big numbers, confident calls to action.',
+      swatches: ['#0B1F3A', '#F5A524', '#EEF1F5', '#5B6B82'], type: 'Space Grotesk + Inter',
+      best: 'Procurement, construction contractors, rail & auto suppliers' },
+    { id: 'D', name: 'Living Material', file: 'd-living.html',
+      line: 'Warm and editorial. Sustainability-led, tactile colour, serif display type.',
+      swatches: ['#F4EFE6', '#3E4A2F', '#C7A574', '#A4643F'], type: 'Fraunces + Manrope',
+      best: 'Architects, green-building specifiers, climate grants' },
+  ];
+
+  document.getElementById('grid').innerHTML = DIRECTIONS.map(d => `
+    <a href="${d.file}" class="card group block rounded-2xl bg-white overflow-hidden border border-black/5">
+      <div class="thumb"><iframe src="${d.file}" title="Direction ${d.id} preview" loading="lazy" tabindex="-1" scrolling="no"></iframe></div>
+      <div class="p-6">
+        <div class="flex items-start justify-between gap-4">
+          <div>
+            <div class="text-[11px] tracking-[.2em] uppercase text-[#6B7075]">Direction ${d.id}</div>
+            <h2 class="text-2xl font-semibold tracking-tight mt-1">${d.name}</h2>
+          </div>
+          <div class="flex gap-1.5 pt-1">${d.swatches.map(c => `<span class="sw" style="background:${c}"></span>`).join('')}</div>
+        </div>
+        <p class="mt-3 text-[15px] leading-relaxed text-[#3C4249]">${d.line}</p>
+        <dl class="mt-4 grid grid-cols-[110px_1fr] gap-y-1.5 text-[13px]">
+          <dt class="text-[#6B7075]">Typography</dt><dd>${d.type}</dd>
+          <dt class="text-[#6B7075]">Speaks best to</dt><dd>${d.best}</dd>
+        </dl>
+        <div class="mt-5 inline-flex items-center gap-2 text-[14px] font-medium group-hover:gap-3 transition-all">Open direction ${d.id} <span aria-hidden="true">→</span></div>
+      </div>
+    </a>`).join('');
+
+  function scaleThumbs() {
+    document.querySelectorAll('.thumb').forEach(t => {
+      const f = t.querySelector('iframe');
+      f.style.transform = `scale(${t.clientWidth / 1440})`;
+    });
+  }
+  window.addEventListener('resize', scaleThumbs);
+  scaleThumbs();
+</script>
+</body>
+</html>
